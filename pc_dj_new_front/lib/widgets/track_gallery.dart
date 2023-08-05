@@ -4,9 +4,9 @@ import 'package:pc_dj_new_front/widgets/components/section_header.dart';
 import 'package:pc_dj_new_front/widgets/components/track_gallery_card.dart';
 
 class TrackGallery extends StatelessWidget {
-  const TrackGallery({Key? key, required this.songs}) : super(key: key);
+  const TrackGallery({Key? key, required this.trackList}) : super(key: key);
 
-  final List<Track> songs;
+  final List<Track> trackList;
 
   @override
   Widget build(BuildContext context) {
@@ -27,9 +27,9 @@ class TrackGallery extends StatelessWidget {
             height: MediaQuery.of(context).size.height * 0.27,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
-              itemCount: songs.length,
+              itemCount: trackList.length,
               itemBuilder: (context, index) {
-                return TrackGalleryCard(song: songs[index]);
+                return TrackGalleryCard(track: trackList[index]);
               },
             ),
           ),

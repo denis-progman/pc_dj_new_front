@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:pc_dj_new_front/styles/styles.dart';
 import 'package:pc_dj_new_front/widgets/components/avatar.dart';
 
 class Header extends StatelessWidget {

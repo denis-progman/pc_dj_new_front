@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:pc_dj_new_front/models/track.dart';
 // import 'package:get/get.dart';
 
-
 class TrackGalleryCard extends StatelessWidget {
-  const TrackGalleryCard({Key? key, required this.song}) : super(key: key);
+  const TrackGalleryCard({Key? key, required this.track}) : super(key: key);
 
-  final Track song;
+  final Track track;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +24,7 @@ class TrackGalleryCard extends StatelessWidget {
                 borderRadius: BorderRadius.circular(15.0),
                 image: DecorationImage(
                   image: AssetImage(
-                    song.coverUrl,
+                    track.coverUrl,
                   ),
                   fit: BoxFit.cover,
                 ),
@@ -47,14 +46,14 @@ class TrackGalleryCard extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        song.title,
+                        track.title,
                         style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                               color: Colors.deepPurple,
                               fontWeight: FontWeight.bold,
                             ),
                       ),
                       Text(
-                        song.description,
+                        track.description,
                         style: Theme.of(context).textTheme.bodySmall!.copyWith(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
