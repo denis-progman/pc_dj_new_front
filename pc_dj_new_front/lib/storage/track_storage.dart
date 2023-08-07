@@ -1,6 +1,7 @@
 import 'package:pc_dj_new_front/models/track.dart';
 
 class TrackStorage {
+
   static List<Track> galleryTrackList = [
     Track(
       title: 'Inspection',

@@ -74,8 +74,11 @@ class TrackPlayerButtons extends StatelessWidget {
                   ),
                 );
               }
-            } else {
-              return const CircularProgressIndicator();
+            } 
+            else {
+              return const CircularProgressIndicator(
+                strokeWidth: 75
+              );
             }
           },
         ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pc_dj_new_front/widgets/components/player_surf_bar_stage.dart';
+import 'package:pc_dj_new_front/widgets/components/track_player/player_surf_bar_stage.dart';
 
 class PlayerSurfBarData {
   final Duration position;

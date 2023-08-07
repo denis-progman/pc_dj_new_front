@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:pc_dj_new_front/event_providers/player_events.dart';
 // import 'package:get/get.dart';
 import 'package:pc_dj_new_front/models/track.dart';
+import 'package:provider/provider.dart';
 
 class TrackListItem extends StatelessWidget {
   const TrackListItem({
@@ -13,9 +15,9 @@ class TrackListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      // onTap: () {
-      //   Get.toNamed('/playlist', arguments: playlist);
-      // },
+      onTap: () {
+        context.read<TrackPlayerEvents>().setTrack(track);
+      },
       child: Container(
         height: 75,
         margin: const EdgeInsets.only(bottom: 10),

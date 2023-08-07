@@ -6,7 +6,7 @@ import 'package:pc_dj_new_front/widgets/search_input.dart';
 import 'package:pc_dj_new_front/widgets/track_gallery.dart';
 import 'package:pc_dj_new_front/styles/styles.dart';
 import 'package:pc_dj_new_front/bars/bars.dart';
-import 'package:pc_dj_new_front/storage/tracks.dart';
+import 'package:pc_dj_new_front/storage/track_storage.dart';
 
 class MainScreen extends StatelessWidget {
   MainScreen({Key? key}) : super(key: key);
@@ -14,6 +14,7 @@ class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<Track> trackList = TrackStorage.galleryTrackList;
+
 
     return Container(
       decoration: BoxDecoration(

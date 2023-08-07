@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:pc_dj_new_front/event_providers/player_events.dart';
 import 'package:pc_dj_new_front/models/track.dart';
-// import 'package:get/get.dart';
+import 'package:provider/provider.dart';
 
 class TrackGalleryCard extends StatelessWidget {
-  const TrackGalleryCard({Key? key, required this.track}) : super(key: key);
+  const TrackGalleryCard({Key? key, required this.track})
+      : super(key: key);
 
   final Track track;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      // onTap: () {
-      //   Get.toNamed('/song', arguments: song);
-      // },
+      onTap: () {
+        context.read<TrackPlayerEvents>().setTrack(track);
+      },
       child: Container(
         margin: const EdgeInsets.only(right: 10),
         child: Stack(
