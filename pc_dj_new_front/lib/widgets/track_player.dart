@@ -6,6 +6,7 @@ import 'package:pc_dj_new_front/models/track.dart';
 import 'package:pc_dj_new_front/storage/track_storage.dart';
 import 'package:pc_dj_new_front/widgets/components/track_player/player_surf_bar.dart';
 import 'package:pc_dj_new_front/widgets/components/track_player/player_view.dart';
+import 'package:pc_dj_new_front/widgets/tack_wave.dart';
 import 'package:provider/provider.dart';
 import 'package:rxdart/rxdart.dart' as rxdart;
 
@@ -47,12 +48,13 @@ class _TrackPlayerState extends State<TrackPlayer> {
     super.dispose();
   }
 
-  Stream<PlayerSurfBarData> get _surfBarDataStream =>
+  Stream<PlayerSurfBarData> get surfBarDataStream =>
       rxdart.Rx.combineLatest2<Duration, Duration?, PlayerSurfBarData>(
           audioPlayer.positionStream, audioPlayer.durationStream, (
         Duration position,
         Duration? duration,
       ) {
+
         return PlayerSurfBarData(
           position,
           duration ?? Duration.zero,
@@ -72,7 +74,11 @@ class _TrackPlayerState extends State<TrackPlayer> {
         // const TrackPlayerBackgroundFilter(),
         TrackPlayerView(
           track: track,
-          surfBarDataStream: _surfBarDataStream,
+          surfBarDataStream: surfBarDataStream,
+          audioPlayer: audioPlayer,
+        ),
+        TrackWaveState(
+          surfBarDataStream: surfBarDataStream,
           audioPlayer: audioPlayer,
         ),
       ],

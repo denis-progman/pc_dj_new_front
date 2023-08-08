@@ -5,12 +5,14 @@ import 'package:pc_dj_new_front/widgets/track_player.dart';
 class NavBar extends StatelessWidget {
   NavBar({
     Key? key,
+    this.ofTopWidget = const Column(),
   }) : super(key: key);
+  final Widget ofTopWidget;
 
   @override
   Widget build(BuildContext context) {
     return Column(mainAxisSize: MainAxisSize.min, children: [
-      const TrackPlayer(),
+      ofTopWidget,
       BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         backgroundColor: Colors.deepPurple.shade800,
