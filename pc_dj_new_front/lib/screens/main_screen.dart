@@ -12,15 +12,17 @@ import 'package:pc_dj_new_front/bars/bars.dart';
 import 'package:pc_dj_new_front/storage/track_storage.dart';
 import 'package:pc_dj_new_front/widgets/track_player.dart';
 import 'package:provider/provider.dart';
+import 'package:rxdart/rxdart.dart' as rxdart;
+
 
 class MainScreen extends StatelessWidget {
   MainScreen({Key? key,}) : super(key: key);
   
-  final trackPlayer = const TrackPlayer();
   @override
   Widget build(BuildContext context) {
     List<Track> trackList = TrackStorage.galleryTrackList;
-    // final trackStream = context.watch<TrackPlayerEvents>().trackStream;
+    final trackStream = context.watch<TrackPlayerEvents>().trackStream;
+    final trackPlayer = TrackPlayer();
 
     return Container(
       decoration: BoxDecoration(

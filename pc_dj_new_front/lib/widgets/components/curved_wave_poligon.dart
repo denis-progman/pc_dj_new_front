@@ -74,8 +74,8 @@ class CurvedWavePolygonBarState extends State<CurvedWavePolygonBar> {
   Widget build(BuildContext context) {
     return Column(      
       children: [
-        Text(widget.duration.toString()),
-        Text((widget.duration - widget.position).toString()),
+        // Text(widget.duration.toString()),
+        // Text((widget.duration - widget.position).toString()),
         if (widget.duration.inMilliseconds.toInt() > 0) 
         CurvedPolygonWaveform(
           maxDuration: widget.duration,

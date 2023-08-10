@@ -64,21 +64,10 @@ class _TrackPlayerState extends State<TrackPlayer> {
         );
       });
 
-  // Stream<PlayerSurfBarData> get surfBarDataStream2 =>
-  //     rxdart.Rx.combineLatest2<Duration, Duration?, PlayerSurfBarData>(
-  //         audioPlayer.positionStream, audioPlayer.durationStream, (
-  //       Duration position,
-  //       Duration? duration,
-  //     ) {
-  //       return PlayerSurfBarData(
-  //         position,
-  //         duration ?? Duration.zero,
-  //       );
-  //     });
+
   @override
   Widget build(BuildContext context) {
     track = context.watch<TrackPlayerEvents>().track;
-
     _loadTrack(autoPlay: true);
     return Column(
       children: [
