@@ -1,3 +1,5 @@
+import 'dart:core';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:just_audio/just_audio.dart';
@@ -11,7 +13,9 @@ import 'package:provider/provider.dart';
 import 'package:rxdart/rxdart.dart' as rxdart;
 
 class TrackPlayer extends StatefulWidget {
-  const TrackPlayer({super.key});
+  const TrackPlayer({
+    super.key,
+  });
 
   @override
   State<TrackPlayer> createState() => _TrackPlayerState();
@@ -54,16 +58,27 @@ class _TrackPlayerState extends State<TrackPlayer> {
         Duration position,
         Duration? duration,
       ) {
-
         return PlayerSurfBarData(
           position,
           duration ?? Duration.zero,
         );
       });
 
+  // Stream<PlayerSurfBarData> get surfBarDataStream2 =>
+  //     rxdart.Rx.combineLatest2<Duration, Duration?, PlayerSurfBarData>(
+  //         audioPlayer.positionStream, audioPlayer.durationStream, (
+  //       Duration position,
+  //       Duration? duration,
+  //     ) {
+  //       return PlayerSurfBarData(
+  //         position,
+  //         duration ?? Duration.zero,
+  //       );
+  //     });
   @override
   Widget build(BuildContext context) {
     track = context.watch<TrackPlayerEvents>().track;
+
     _loadTrack(autoPlay: true);
     return Column(
       children: [

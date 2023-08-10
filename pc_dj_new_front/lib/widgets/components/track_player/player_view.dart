@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
+import 'package:pc_dj_new_front/event_providers/player_events.dart';
 import 'package:pc_dj_new_front/models/track.dart';
 import 'package:pc_dj_new_front/widgets/components/track_player/player_buttons.dart';
 import 'package:pc_dj_new_front/widgets/components/track_player/player_surf_bar.dart';
+import 'package:provider/provider.dart';
 
 class TrackPlayerView extends StatelessWidget {
   const TrackPlayerView({
@@ -19,6 +21,8 @@ class TrackPlayerView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // context.read<TrackPlayerEvents>().passTrackStream(_surfBarDataStream);
+
     return Padding(
       padding: const EdgeInsets.symmetric(
         horizontal: 10.0,
