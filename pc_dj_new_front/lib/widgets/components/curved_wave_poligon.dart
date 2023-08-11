@@ -65,7 +65,7 @@ class CurvedWavePolygonBarState extends State<CurvedWavePolygonBar> {
     // TODO: implement didChangeDependencies
     super.didChangeDependencies();
     trackWaveStyle = TrackWaveStyle(
-      height: MediaQuery.of(context).size.height * 0.1,
+      height: MediaQuery.of(context).size.height * 0.06,
       width: MediaQuery.of(context).size.width,
     );
   }

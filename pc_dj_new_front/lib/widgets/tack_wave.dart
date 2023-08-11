@@ -25,7 +25,7 @@ class TrackWaveState extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(
         horizontal: 10.0,
-        vertical: 5.0,
+        // vertical: 5.0,
       ),
       child: 
           StreamBuilder<PlayerSurfBarData>(

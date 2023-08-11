@@ -6,6 +6,7 @@ import 'package:pc_dj_new_front/widgets/components/track_player/player_surf_bar.
 import 'package:pc_dj_new_front/widgets/general_play_list.dart';
 import 'package:pc_dj_new_front/widgets/header.dart';
 import 'package:pc_dj_new_front/widgets/search_input.dart';
+import 'package:pc_dj_new_front/widgets/tack_wave.dart';
 import 'package:pc_dj_new_front/widgets/track_gallery.dart';
 import 'package:pc_dj_new_front/styles/styles.dart';
 import 'package:pc_dj_new_front/bars/bars.dart';
@@ -14,16 +15,36 @@ import 'package:pc_dj_new_front/widgets/track_player.dart';
 import 'package:provider/provider.dart';
 import 'package:rxdart/rxdart.dart' as rxdart;
 
-
 class MainScreen extends StatelessWidget {
-  MainScreen({Key? key,}) : super(key: key);
-  
+  MainScreen({
+    Key? key,
+  }) : super(key: key);
+
+  final AudioPlayer audioPlayer = AudioPlayer();
+
+  Stream<PlayerSurfBarData> get surfBarDataStream =>
+      rxdart.Rx.combineLatest2<Duration, Duration?, PlayerSurfBarData>(
+          audioPlayer.positionStream, audioPlayer.durationStream, (
+        Duration position,
+        Duration? duration,
+      ) {
+        return PlayerSurfBarData(
+          position,
+          duration ?? Duration.zero,
+        );
+      }).asBroadcastStream();
+
   @override
   Widget build(BuildContext context) {
     List<Track> trackList = TrackStorage.galleryTrackList;
-    final trackStream = context.watch<TrackPlayerEvents>().trackStream;
-    final trackPlayer = TrackPlayer();
-
+    final trackPlayer = TrackPlayer(
+      audioPlayer: audioPlayer, 
+      surfBarDataStream: surfBarDataStream,
+    );
+    final trackWaveBar = TrackWaveState(
+      surfBarDataStream: surfBarDataStream,
+      audioPlayer: audioPlayer,
+    );
     return Container(
       decoration: BoxDecoration(
         gradient: LinearGradient(
@@ -37,24 +58,13 @@ class MainScreen extends StatelessWidget {
       ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
-        appBar: const TopAppBar(),
-        bottomNavigationBar: NavBar(ofTopWidget: trackPlayer),
+        appBar: TopAppBar(flexibleSpaceBar: trackWaveBar),
+        bottomNavigationBar: 
+        NavBar(ofTopWidget: trackPlayer),
         body: SingleChildScrollView(
           child: Column(
             children: [
-              Header(),
-              // StreamBuilder<PlayerSurfBarData>(
-              //   stream: trackStream,
-              //   builder: (context, snapshot) {
-              //     final positionData = snapshot.data;
-              //     return Column(children: [
-              //         Text(positionData?.position.toString() ?? " - "),
-              //         Text(positionData?.duration.toString() ?? " - "),
-              //       ]
-              //     );
-              //   },
-              // ),
-              const SearchInput(),
+              // const SearchInput(),
               TrackGallery(trackList: trackList),
               GeneralPlayList(trackList: trackList),
             ],

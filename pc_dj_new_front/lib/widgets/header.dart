@@ -7,7 +7,7 @@ class Header extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(4.0),
+      padding: const EdgeInsets.all(2.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -25,31 +25,31 @@ class Header extends StatelessWidget {
           // ),
           // const SizedBox(height: 20),
           SizedBox(
-            height: 100,
-            child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-                  const TitledAvatar(
-                    imageUrl: 'assets/images/default/dj_avatar.png', 
-                    imageTitle: "Best Critic",
-                    size: 30,
-                  ),
-                  Container(
-                    width: MediaQuery.of(context).size.width * 0.40,
-                    decoration: const BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage('assets/images/pc_studio_dj_logo.png'),
-                        fit: BoxFit.fitWidth,
+              height: 100,
+              child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    const TitledAvatar(
+                      imageUrl: 'assets/images/default/dj_avatar.png',
+                      imageTitle: "Best Critic",
+                      size: 30,
+                    ),
+                    Container(
+                      width: MediaQuery.of(context).size.width * 0.40,
+                      decoration: const BoxDecoration(
+                        image: DecorationImage(
+                          image:
+                              AssetImage('assets/images/pc_studio_dj_logo.png'),
+                          fit: BoxFit.contain,
+                        ),
                       ),
                     ),
-                  ),
-                  const TitledAvatar(
-                    imageUrl: 'assets/images/default/dj_avatar.png', 
-                    imageTitle: "Best author",
-                    size: 30,
-                  ),
-                ]
-          )),
+                    const TitledAvatar(
+                      imageUrl: 'assets/images/default/dj_avatar.png',
+                      imageTitle: "Best author",
+                      size: 30,
+                    ),
+                  ])),
         ],
       ),
     );

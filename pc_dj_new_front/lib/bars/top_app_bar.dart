@@ -1,30 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:pc_dj_new_front/widgets/header.dart';
 // import 'package:pc_dj_new_front/styles/styles.dart';
 
 class TopAppBar extends StatelessWidget implements PreferredSizeWidget {
   const TopAppBar({
     Key? key,
-  }) : super(key: key);
+    this.flexibleSpaceBar = const Column(),
+  });
+
+  final Widget flexibleSpaceBar;
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: Colors.transparent,
-      elevation: 0,
-      // leading: const Icon(Icons.grid_view_rounded),
-      actions: [
-        // Container(
-        //   margin: const EdgeInsets.only(right: 20),
-        //   child: const CircleAvatar(
-        //     backgroundImage: AssetImage(
-        //       'assets/images/default/dj_avatar.jpg',
-        //     ),
-        //   ),
-        // ),
-      ],
+      backgroundColor: const Color.fromARGB(0, 0, 0, 0),
+      forceMaterialTransparency: true,
+      flexibleSpace: Column(
+        children: [
+          SizedBox(height: 50,),
+          Header(),
+          flexibleSpaceBar,
+        ],
+      ),
     );
   }
 
   @override
-  Size get preferredSize => const Size.fromHeight(5.0);
+  Size get preferredSize => const Size.fromHeight(160);
 }

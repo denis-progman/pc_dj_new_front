@@ -10,24 +10,27 @@ class TrackPlayerView extends StatelessWidget {
   const TrackPlayerView({
     Key? key,
     required this.track,
-    required Stream<PlayerSurfBarData> surfBarDataStream,
     required this.audioPlayer,
+    required Stream<PlayerSurfBarData> surfBarDataStream,
   })  : _surfBarDataStream = surfBarDataStream,
         super(key: key);
 
   final Track track;
-  final Stream<PlayerSurfBarData> _surfBarDataStream;
   final AudioPlayer audioPlayer;
+  final Stream<PlayerSurfBarData> _surfBarDataStream;
 
   @override
   Widget build(BuildContext context) {
-    // context.read<TrackPlayerEvents>().passTrackStream(_surfBarDataStream);
-
-    return Padding(
+    return 
+    Material(
+              color: Colors.transparent,
+            child: Padding(
       padding: const EdgeInsets.symmetric(
         horizontal: 10.0,
         vertical: 5.0,
       ),
+    child: Material(
+      color: Colors.transparent,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -64,6 +67,7 @@ class TrackPlayerView extends StatelessWidget {
           // const TrackPlayerFooter(),
         ],
       ),
-    );
+    ),
+          ));
   }
 }

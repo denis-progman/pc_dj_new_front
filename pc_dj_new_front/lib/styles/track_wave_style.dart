@@ -12,7 +12,7 @@ class TrackWaveStyle {
     this.showActiveWaveform = true,
     this.absolute = false,
     this.invert = false,
-    this.borderWidth = 1.0,
+    this.borderWidth = 0,
     this.activeBorderColor = Colors.white,
     this.inactiveBorderColor = Colors.white,
     this.isRoundedRectangle = false,
