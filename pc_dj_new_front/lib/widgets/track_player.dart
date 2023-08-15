@@ -94,6 +94,6 @@ class _TrackPlayerState extends State<TrackPlayer> {
         ),
       ],
     ),
-          );;
+  );
   }
 }

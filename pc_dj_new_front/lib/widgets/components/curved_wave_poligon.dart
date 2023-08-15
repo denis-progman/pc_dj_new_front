@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_audio_waveforms/flutter_audio_waveforms.dart';
+import 'package:pc_dj_new_front/styles/styles.dart';
 import 'package:pc_dj_new_front/styles/track_wave_style.dart';
 import '../components/wave_json_data_loader.dart';
 
@@ -83,10 +84,10 @@ class CurvedWavePolygonBarState extends State<CurvedWavePolygonBar> {
           samples: samples,
           height: trackWaveStyle.height,
           width: trackWaveStyle.width,
-          inactiveColor: trackWaveStyle.inactiveColor,
+          inactiveColor: AppColors.firstBrand.withRed(150),
           invert: trackWaveStyle.invert,
           absolute: trackWaveStyle.absolute,
-          activeColor: trackWaveStyle.activeColor,
+          activeColor: AppColors.secondBrand.withRed(200),
           showActiveWaveform: trackWaveStyle.showActiveWaveform,
           strokeWidth: trackWaveStyle.borderWidth,
           style: trackWaveStyle.style,

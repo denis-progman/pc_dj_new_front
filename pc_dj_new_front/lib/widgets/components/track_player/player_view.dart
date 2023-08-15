@@ -35,23 +35,23 @@ class TrackPlayerView extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.end,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            track.title,
-            style: Theme.of(context).textTheme.headlineSmall!.copyWith(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                ),
-          ),
-          const SizedBox(height: 5),
-          Text(
-            track.description,
-            maxLines: 2,
-            style: Theme.of(context)
-                .textTheme
-                .bodySmall!
-                .copyWith(color: Colors.white),
-          ),
-          const SizedBox(height: 20),
+          // Text(
+          //   track.title,
+          //   style: Theme.of(context).textTheme.headlineSmall!.copyWith(
+          //         color: Colors.white,
+          //         fontWeight: FontWeight.bold,
+          //       ),
+          // ),
+          // const SizedBox(height: 5),
+          // Text(
+          //   track.description,
+          //   maxLines: 2,
+          //   style: Theme.of(context)
+          //       .textTheme
+          //       .bodySmall!
+          //       .copyWith(color: Colors.white),
+          // ),
+          const SizedBox(height: 15),
           StreamBuilder<PlayerSurfBarData>(
             stream: _surfBarDataStream,
             builder: (context, snapshot) {
