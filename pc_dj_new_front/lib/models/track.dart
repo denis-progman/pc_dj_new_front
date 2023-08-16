@@ -1,6 +1,5 @@
-import 'dart:ffi';
-
 class Track {
+  final int id;
   final String title;
   final String description;
   final String url;
@@ -11,13 +10,13 @@ class Track {
 
   int get rating => (yes * 100 / (yes + no)).round();
 
-  Track({
-    required this.title,
-    required this.description,
-    required this.url,
-    required this.coverUrl,
-    required this.yes,
-    required this.no,
-    required this.plays
-  });
+  Track(
+      {required this.id,
+      required this.title,
+      required this.description,
+      required this.url,
+      required this.coverUrl,
+      required this.yes,
+      required this.no,
+      required this.plays});
 }

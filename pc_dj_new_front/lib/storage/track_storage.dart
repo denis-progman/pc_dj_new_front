@@ -4,6 +4,7 @@ class TrackStorage {
 
   static List<Track> galleryTrackList = [
     Track(
+      id: 0,
       title: 'Inspection',
       description: 'Leftfield',
       url: 'assets/audio/default/tracks/Leftfield_-_Inspection__Hackers_2.mp3',
@@ -13,6 +14,7 @@ class TrackStorage {
       plays: 12000,
     ),
     Track(
+      id: 1,
       title: 'Sad but True',
       description: 'Orbital',
       url: 'assets/audio/default/tracks/Orbital_-_Sad_but_True.mp3',
@@ -22,6 +24,7 @@ class TrackStorage {
       plays: 964,
     ),
     Track(
+      id: 2,
       title: 'Cowgirl',
       description: 'Cowgirl',
       url: 'assets/audio/default/tracks/Underworld_-_Cowgirl.mp3',

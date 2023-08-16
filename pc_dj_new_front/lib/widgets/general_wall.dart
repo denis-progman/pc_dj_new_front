@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:pc_dj_new_front/models/track.dart';
 import 'package:pc_dj_new_front/widgets/components/section_header.dart';
-import 'package:pc_dj_new_front/widgets/components/track_list_item.dart';
+import 'package:pc_dj_new_front/widgets/components/track_list_item/track_list_item.dart';
+import 'package:pc_dj_new_front/widgets/wall_post.dart';
 
-class GeneralPlayList extends StatelessWidget {
-  const GeneralPlayList({Key? key, required this.trackList, }) : super(key: key);
+class GeneralWall extends StatelessWidget {
+  GeneralWall({
+    Key? key,
+    required this.trackList,
+  }) : super(key: key);
   final List<Track> trackList;
+
+  final ScrollController _controller = ScrollController();
+  final double _height = 100.0;
 
   @override
   Widget build(BuildContext context) {
@@ -15,12 +22,18 @@ class GeneralPlayList extends StatelessWidget {
         children: [
           const SectionHeader(title: 'Playlists'),
           ListView.builder(
+            controller: _controller,
             shrinkWrap: true,
             padding: const EdgeInsets.only(top: 20),
-            physics: const NeverScrollableScrollPhysics(),
             itemCount: trackList.length,
             itemBuilder: ((context, index) {
-              return TrackListItem(track: trackList[index]);
+              return WallPost(
+                TrackPost(
+                  track: trackList[index],
+                  // index: index,
+                ),
+                scrollController: _controller,
+              );
             }),
           ),
         ],

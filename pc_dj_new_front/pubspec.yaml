@@ -41,6 +41,7 @@ dependencies:
   provider: ^6.0.5
   flutter_audio_waveforms: ^1.2.1+8
   audioplayers: ^5.0.0
+  comment_box: ^0.0.18
 
 dev_dependencies:
   flutter_test:

@@ -41,6 +41,7 @@ class Header extends StatelessWidget {
                           image:
                               AssetImage('assets/images/pc_studio_dj_logo.png'),
                           fit: BoxFit.contain,
+                          opacity: 0.9
                         ),
                       ),
                     ),

@@ -3,7 +3,7 @@ import 'package:just_audio/just_audio.dart';
 import 'package:pc_dj_new_front/event_providers/player_events.dart';
 import 'package:pc_dj_new_front/models/track.dart';
 import 'package:pc_dj_new_front/widgets/components/track_player/player_surf_bar.dart';
-import 'package:pc_dj_new_front/widgets/general_play_list.dart';
+import 'package:pc_dj_new_front/widgets/general_wall.dart';
 import 'package:pc_dj_new_front/widgets/header.dart';
 import 'package:pc_dj_new_front/widgets/search_input.dart';
 import 'package:pc_dj_new_front/widgets/tack_wave.dart';
@@ -38,7 +38,7 @@ class MainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     List<Track> trackList = TrackStorage.galleryTrackList;
     final trackPlayer = TrackPlayer(
-      audioPlayer: audioPlayer, 
+      audioPlayer: audioPlayer,
       surfBarDataStream: surfBarDataStream,
     );
     final trackWaveBar = TrackWaveState(
@@ -59,14 +59,13 @@ class MainScreen extends StatelessWidget {
       child: Scaffold(
         backgroundColor: Colors.transparent,
         appBar: TopAppBar(flexibleSpaceBar: trackWaveBar),
-        bottomNavigationBar: 
-        NavBar(ofTopWidget: trackPlayer),
+        bottomNavigationBar: NavBar(ofTopWidget: trackPlayer),
         body: SingleChildScrollView(
           child: Column(
             children: [
               // const SearchInput(),
               TrackGallery(trackList: trackList),
-              GeneralPlayList(trackList: trackList),
+              GeneralWall(trackList: trackList),
             ],
           ),
         ),
