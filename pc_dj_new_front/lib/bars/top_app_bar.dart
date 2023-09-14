@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:pc_dj_new_front/widgets/header.dart';
-// import 'package:pc_dj_new_front/styles/styles.dart';
 
 class TopAppBar extends StatelessWidget implements PreferredSizeWidget {
   const TopAppBar({
-    Key? key,
+    super.key, 
     this.flexibleSpaceBar = const Column(),
   });
 

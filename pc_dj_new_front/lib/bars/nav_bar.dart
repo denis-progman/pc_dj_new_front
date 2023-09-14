@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:pc_dj_new_front/widgets/track_player.dart';
-// import 'package:pc_dj_new_front/styles/styles.dart';
+import 'package:get/get.dart';
+import 'package:pc_dj_new_front/app_router.dart';
 
 class NavBar extends StatelessWidget {
-  NavBar({
+  const NavBar({
     Key? key,
     this.ofTopWidget = const Column(),
   }) : super(key: key);
@@ -14,6 +14,9 @@ class NavBar extends StatelessWidget {
     return Column(mainAxisSize: MainAxisSize.min, children: [
       ofTopWidget,
       BottomNavigationBar(
+        onTap: (routIndex) => {
+          Get.toNamed(AppRouter.pageRouts[routIndex].path)
+        },
         type: BottomNavigationBarType.fixed,
         backgroundColor: Colors.deepPurple.shade800,
         unselectedItemColor: Colors.white,
@@ -21,23 +24,11 @@ class NavBar extends StatelessWidget {
         showUnselectedLabels: false,
         showSelectedLabels: false,
         iconSize: 22,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.favorite_outline),
-            label: 'Favorites',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.play_circle_outline),
-            label: 'Play',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.people_outline),
-            label: 'Profile',
-          ),
+        items: <BottomNavigationBarItem>[
+          for(var rout in AppRouter.pageRouts) BottomNavigationBarItem(
+            label: rout.label,
+            icon: rout.icon,
+          )
         ],
       ),
     ]);

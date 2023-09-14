@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pc_dj_new_front/widgets/components/avatar.dart';
+import 'package:pc_dj_new_front/widgets/components/titled_avatar.dart';
 
 class Header extends StatelessWidget {
   const Header({Key? key}) : super(key: key);
