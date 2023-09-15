@@ -12,12 +12,11 @@ import 'package:pc_dj_new_front/widgets/track_gallery.dart';
 import 'package:pc_dj_new_front/widgets/track_player.dart';
 
 class HomePage extends StatelessWidget {
-  HomePage({
-    super.key, 
-    required this.audioPlayer, 
-    required this.trackPlayer, 
-    required this.surfBarDataStream
-  });
+  HomePage(
+      {super.key,
+      required this.audioPlayer,
+      required this.trackPlayer,
+      required this.surfBarDataStream});
   final AudioPlayer audioPlayer;
   final TrackPlayer trackPlayer;
   final Stream<PlayerSurfBarData> surfBarDataStream;
@@ -42,7 +41,7 @@ class HomePage extends StatelessWidget {
             children: [
               // const SearchInput(),
               TrackGallery(trackList: trackList),
-              GeneralWall(trackList: trackList),
+              GeneralWall(postList: trackList),
             ],
           ),
         ),

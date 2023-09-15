@@ -6,9 +6,9 @@ import 'package:pc_dj_new_front/widgets/components/track_list_item/track_list_it
 class GeneralWall extends StatelessWidget {
   GeneralWall({
     Key? key,
-    required this.trackList,
+    required this.postList,
   }) : super(key: key);
-  final List<Track> trackList;
+  final List<Track> postList;
 
   final ScrollController _controller = ScrollController();
 
@@ -23,10 +23,10 @@ class GeneralWall extends StatelessWidget {
             controller: _controller,
             shrinkWrap: true,
             padding: const EdgeInsets.only(top: 20),
-            itemCount: trackList.length,
+            itemCount: postList.length,
             itemBuilder: ((context, index) {
               return TrackPost(
-                track: trackList[index],
+                track: postList[index],
                 scrollController: _controller,
               );
             }),

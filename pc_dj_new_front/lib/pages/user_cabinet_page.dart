@@ -7,6 +7,7 @@ import 'package:pc_dj_new_front/storage/track_storage.dart';
 import 'package:pc_dj_new_front/styles/app_colors.dart';
 import 'package:pc_dj_new_front/widgets/components/titled_avatar.dart';
 import 'package:pc_dj_new_front/widgets/components/track_player/player_surf_bar.dart';
+import 'package:pc_dj_new_front/widgets/general_wall.dart';
 import 'package:pc_dj_new_front/widgets/track_player.dart';
 
 class UserCabinetPage extends StatelessWidget {
@@ -21,6 +22,8 @@ class UserCabinetPage extends StatelessWidget {
   final Stream<PlayerSurfBarData> surfBarDataStream;
 
   final List<Track> trackList = TrackStorage.galleryTrackList;
+  final TextEditingController _controller = TextEditingController();
+
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +33,7 @@ class UserCabinetPage extends StatelessWidget {
           backgroundColor: const Color.fromARGB(0, 0, 0, 0),
           forceMaterialTransparency: true,
           flexibleSpace: Column(
-            crossAxisAlignment:CrossAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SizedBox(height: 10,),
@@ -42,7 +45,9 @@ class UserCabinetPage extends StatelessWidget {
         bottomNavigationBar: NavBar(ofTopWidget: trackPlayer),
         body: SingleChildScrollView(
           physics: null,
-          child: Column(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20),
+            child: Column(
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -62,6 +67,18 @@ class UserCabinetPage extends StatelessWidget {
                 ],
               ),
               SizedBox(height: 10,),
+              TextFormField(
+                initialValue: "The short info about this guy. What ever he wants to explain about himself (the limit is 2000 letters)",
+                  decoration: InputDecoration(
+                    border: InputBorder.none,
+                    labelText: "User description",
+                  ),
+                  // controller: _controller,
+                  minLines: 2,
+                  keyboardType: TextInputType.multiline,
+                  maxLines: 3,
+                ),
+              SizedBox(height: 10,),
               TextButton(
                 onPressed: () => {},
                 style: TextButton.styleFrom(
@@ -70,8 +87,9 @@ class UserCabinetPage extends StatelessWidget {
                 ),
                 child: const Text("ADD TRACK"),
               ),
+              GeneralWall(postList: trackList),
             ],
-          ),
+          )),
         ),
       ),
     );
