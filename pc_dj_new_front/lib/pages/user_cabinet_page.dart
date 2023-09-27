@@ -4,7 +4,7 @@ import 'package:pc_dj_new_front/bars/nav_bar.dart';
 import 'package:pc_dj_new_front/models/track.dart';
 import 'package:pc_dj_new_front/pages/screen_wrapper.dart';
 import 'package:pc_dj_new_front/storage/track_storage.dart';
-import 'package:pc_dj_new_front/styles/app_colors.dart';
+import 'package:pc_dj_new_front/widgets/components/file_upload_button.dart';
 import 'package:pc_dj_new_front/widgets/components/titled_avatar.dart';
 import 'package:pc_dj_new_front/widgets/components/track_player/player_surf_bar.dart';
 import 'package:pc_dj_new_front/widgets/general_wall.dart';
@@ -79,14 +79,7 @@ class UserCabinetPage extends StatelessWidget {
                   maxLines: 3,
                 ),
               SizedBox(height: 10,),
-              TextButton(
-                onPressed: () => {},
-                style: TextButton.styleFrom(
-                  minimumSize: const Size(100, 16),
-                  backgroundColor: AppColors.secondBrand.withOpacity(0.6),
-                ),
-                child: const Text("ADD TRACK"),
-              ),
+              FileUploadButton("ADD TRACK"),
               GeneralWall(postList: trackList),
             ],
           )),
