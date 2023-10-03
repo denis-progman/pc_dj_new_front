@@ -20,36 +20,41 @@ class _FileUploadButtonState extends State<FileUploadButton> {
   late File _file;
   double _progressValue = 0;
   int _progressPercentValue = 0;
+  final TrackUploadForm form = TrackUploadForm();
 
-  void _chooseFile(context) async {
+  Future<File?> _chooseFile() async {
     FilePickerResult? pickedFiles =
         await FilePicker.platform.pickFiles(type: FileType.any);
     if (pickedFiles != null) {
       String? filePath = pickedFiles.files.single.path;
       if (filePath != null) {
         _file = File(filePath);
-        _uploadFile(context, _file);
-        print(_file.path);
+        return _file;
       }
     }
+    return null;
   }
 
-  void _uploadFile(BuildContext context, File file) async {
-    if (file == null) {
-      _showSnackBar(context, "Select file first");
-      return;
-    }
-
-    _setUploadProgress(0, 0);
-
+  void _uploadFile(BuildContext context) async {
     try {
-      TrackUploadForm form = TrackUploadForm();
+      showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return form;
+          });
 
+      _setUploadProgress(0, 0);
+
+      // File? file = await _chooseFile();
+      File? file = null;
+      if (file == null) {
+        _showSnackBar(context, "Select file first");
+        return;
+      }
       await TrackService.trackUpload(
-        file: file, 
-        onUploadProgress: _setUploadProgress,
-        requestFields: form.formData
-      );
+          file: file,
+          onUploadProgress: _setUploadProgress,
+          requestFields: form.formData);
 
       _showSnackBar(context, "File uploaded - ${file.path}");
     } catch (e) {
@@ -112,13 +117,19 @@ class _FileUploadButtonState extends State<FileUploadButton> {
 
   @override
   Widget build(BuildContext context) {
-    return _progressPercentValue != 100 && _progressPercentValue != 0 ? _buildUploadView() : TextButton(
-      onPressed: () => {_chooseFile(context)},
-      style: TextButton.styleFrom(
-        minimumSize: const Size(100, 16),
-        backgroundColor: AppColors.secondBrand.withOpacity(0.6),
-      ),
-      child: Text(widget.title),
+    return Column(
+      children: [
+        _progressPercentValue != 100 && _progressPercentValue != 0
+            ? _buildUploadView()
+            : TextButton(
+                onPressed: () => {_uploadFile(context)},
+                style: TextButton.styleFrom(
+                  minimumSize: const Size(100, 16),
+                  backgroundColor: AppColors.secondBrand.withOpacity(0.6),
+                ),
+                child: Text(widget.title),
+              )
+      ],
     );
   }
 }

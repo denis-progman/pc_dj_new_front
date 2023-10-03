@@ -42,8 +42,8 @@ class _TrackUploadFormState extends State<TrackUploadForm> {
   Widget build(BuildContext context) {
     return AlertDialog(
       title: Text('Contact Us'),
-      content: ListView(
-        shrinkWrap: true,
+      content: Column(
+        // shrinkWrap: true,
         children: [
           TextFormField(
             controller: widget.titleController,
