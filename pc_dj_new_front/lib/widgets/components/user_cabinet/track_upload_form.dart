@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'dart:io';
-
 import 'package:pc_dj_new_front/widgets/components/select_input.dart';
 
 typedef void SendTrackFormCallback(
@@ -10,26 +9,22 @@ typedef void SendTrackFormCallback(
   File track,
 );
 
-class TrackUploadForm extends StatefulWidget {
-  TrackUploadForm({super.key});
-
-  @override
-  State<TrackUploadForm> createState() => _TrackUploadFormState();
+class TrackUploadForm extends StatelessWidget {
+  final String fileName;
+  final Function(Map<String, String>?) onSubmitCallback;
+  TrackUploadForm(
+      {required this.onSubmitCallback, required this.fileName, super.key});
 
   final TextEditingController titleController = TextEditingController();
   final TextEditingController authorController = TextEditingController();
   final TextEditingController styleController = TextEditingController();
 
   Map<String, String> get formData => {
-    "title": titleController.value.toString(),
-    "author": authorController.value.toString(),
-    "style_id": styleController.value.toString(),
-  };
-}
+        "title": titleController.text,
+        "author": authorController.text,
+        "style_id": styleController.text,
+      };
 
-class _TrackUploadFormState extends State<TrackUploadForm> {
-  String? stileID = null;
-  File? track = null;
   final Map<String, String> styles = {
     "1": "club",
     "2": "trance",
@@ -41,33 +36,43 @@ class _TrackUploadFormState extends State<TrackUploadForm> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: Text('Contact Us'),
+      title: Text(
+        fileName,
+        style: TextStyle(color: Colors.black),
+      ),
       content: Column(
         // shrinkWrap: true,
         children: [
+          Text('Contact Us'),
           TextFormField(
-            controller: widget.titleController,
+            controller: titleController,
             decoration: InputDecoration(hintText: 'Title'),
           ),
           TextFormField(
-            controller: widget.authorController,
+            controller: authorController,
             decoration: InputDecoration(hintText: 'Author'),
           ),
           SelectInput(
-            styles, 
+            styles,
             currentValue: "1",
             label: "Music style",
-            fieldController: widget.styleController,
+            onSelectedCallback: (v) => styleController.text = v,
           ),
         ],
       ),
       actions: [
         TextButton(
-          onPressed: () => Navigator.pop(context),
+          onPressed: () {
+            onSubmitCallback(null);
+            Navigator.pop(context);
+          },
           child: Text('Cancel'),
         ),
         TextButton(
-          onPressed: () => (), // widget.sendAction(),
+          onPressed: () {
+            onSubmitCallback(formData);
+            Navigator.pop(context);
+          },
           child: Text('Send'),
         ),
       ],

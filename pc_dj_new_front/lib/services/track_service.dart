@@ -35,12 +35,12 @@ class TrackService {
 
     requestFields.forEach((key, value) => request.fields[key] = value);
     request.fields['user_id'] = "2";
-    // request.files.add(await MultipartFile.fromPath(
-    //   "track",
-    //   file.path,
-    //   filename: basename(file.path),
-    //   contentType: MediaType('application', 'mp3'),
-    // ));
+    request.files.add(await MultipartFile.fromPath(
+      "track",
+      file.path,
+      filename: basename(file.path),
+      contentType: MediaType('application', 'mp3'),
+    ));
     final streamedResponse = await request.send();
     return streamedResponse.toString();
   }

@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pc_dj_new_front/services/track_service.dart';
 import 'package:pc_dj_new_front/styles/app_colors.dart';
-
 import 'package:file_picker/file_picker.dart';
 import 'dart:io';
-
 import 'package:pc_dj_new_front/widgets/components/user_cabinet/track_upload_form.dart';
+import 'package:path/path.dart' as p;
 
 class FileUploadButton extends StatefulWidget {
   final String title;
@@ -18,9 +17,9 @@ class FileUploadButton extends StatefulWidget {
 
 class _FileUploadButtonState extends State<FileUploadButton> {
   late File _file;
+  late Map<String, String>? _formData;
   double _progressValue = 0;
   int _progressPercentValue = 0;
-  final TrackUploadForm form = TrackUploadForm();
 
   Future<File?> _chooseFile() async {
     FilePickerResult? pickedFiles =
@@ -37,26 +36,35 @@ class _FileUploadButtonState extends State<FileUploadButton> {
 
   void _uploadFile(BuildContext context) async {
     try {
-      showDialog(
-          context: context,
-          builder: (BuildContext context) {
-            return form;
-          });
-
-      _setUploadProgress(0, 0);
-
-      // File? file = await _chooseFile();
-      File? file = null;
+      File? file = await _chooseFile();
       if (file == null) {
         _showSnackBar(context, "Select file first");
         return;
       }
-      await TrackService.trackUpload(
-          file: file,
-          onUploadProgress: _setUploadProgress,
-          requestFields: form.formData);
+      TrackUploadForm form = TrackUploadForm(
+        fileName: p.basename(file.path),
+        onSubmitCallback: (formData) => _formData = formData
+      );
+      
+      await showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return form;
+      });
 
+      if (_formData == null) {
+        _showSnackBar(context, "Icorrected form filling, action is canceled!");
+        return;
+      }
+      _setUploadProgress(0, 0);
+      await TrackService.trackUpload(
+        file: file,
+        onUploadProgress: _setUploadProgress,
+        requestFields: _formData!,
+      );
       _showSnackBar(context, "File uploaded - ${file.path}");
+
+
     } catch (e) {
       e.printInfo();
       _showSnackBar(context, e.toString());
