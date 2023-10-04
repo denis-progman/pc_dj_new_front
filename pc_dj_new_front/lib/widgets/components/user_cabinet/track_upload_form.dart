@@ -41,16 +41,17 @@ class TrackUploadForm extends StatelessWidget {
         style: TextStyle(color: Colors.black),
       ),
       content: Column(
-        // shrinkWrap: true,
         children: [
           Text('Contact Us'),
           TextFormField(
             controller: titleController,
-            decoration: InputDecoration(hintText: 'Title'),
+            decoration: InputDecoration(hintText: 'Title', labelText: 'Title'),
+            style: TextStyle(color: Colors.black),
           ),
           TextFormField(
             controller: authorController,
-            decoration: InputDecoration(hintText: 'Author'),
+            decoration: InputDecoration(hintText: 'Author', labelText: 'Author'),
+            style: TextStyle(color: Colors.black),
           ),
           SelectInput(
             styles,
