@@ -5,6 +5,7 @@ import 'package:pc_dj_new_front/bars/top_app_bar.dart';
 import 'package:pc_dj_new_front/models/track.dart';
 import 'package:pc_dj_new_front/pages/screen_wrapper.dart';
 import 'package:pc_dj_new_front/storage/track_storage.dart';
+import 'package:pc_dj_new_front/storage/wall_storage.dart';
 import 'package:pc_dj_new_front/widgets/components/track_player/player_surf_bar.dart';
 import 'package:pc_dj_new_front/widgets/general_wall.dart';
 import 'package:pc_dj_new_front/widgets/tack_wave.dart';
@@ -20,12 +21,13 @@ class HomePage extends StatelessWidget {
   final AudioPlayer audioPlayer;
   final TrackPlayer trackPlayer;
   final Stream<PlayerSurfBarData> surfBarDataStream;
+  WallStorage wallStorage = WallStorage();
 
   final List<Track> trackList = TrackStorage.galleryTrackList;
 
   @override
   Widget build(BuildContext context) {
-    List<Track> trackList = TrackStorage.galleryTrackList;
+    List<Track> trackList = wallStorage.trackList;
     final trackWaveBar = TrackWaveState(
       surfBarDataStream: surfBarDataStream,
       audioPlayer: audioPlayer,

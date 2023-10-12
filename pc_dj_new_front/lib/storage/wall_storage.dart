@@ -1,6 +1,12 @@
 import 'package:pc_dj_new_front/models/track.dart';
+import 'package:pc_dj_new_front/services/track_service.dart';
 
 class WallStorage {
+
+  List<Track> get trackList => TrackService.getTracksBy(
+    fieldName: "visibility", 
+    fieldValue: "all",
+  );
 
   static List<Track> galleryTrackList = [
     Track(
