@@ -1,16 +1,21 @@
-<h2 align="center">PC Studio DJ - the Flutter mobile app</h1>
+<div align="center"><img src="https://raw.githubusercontent.com/denis-progman/pcdj_site/main/files/images/web_site_avatar.jpg" width="300" alt="PC studio DJ head cover">
+<h2>PC Studio DJ - the Flutter mobile app</h1>
+</div>
+
+
+## About
+ PC Studio DJ is my fun side project about electronic music(EDM) and for its creators, that i doing in my free time, as a hobby.
+ This is a back-end part of the new version of the system as a mobile application. 
 
 **[the Back-end API part is here.](https://github.com/denis-progman/pcdj_site)**
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+**For help getting started Flutter, see the [online documentation](https://docs.flutter.dev/).**
 
-A few resources to get you started if this is your first Flutter project:
+---
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+ ## ⚠️ In progress, and not available publicly currently
+ The project will be moved from a social network platform to this mobile version.
+ 
+ **See the current project [by the link](https://vk.com/pcstudiodj)**
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
