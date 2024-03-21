@@ -1,6 +1,6 @@
-# pc_dj_new_front
+<h2 align="center">PC Studio DJ - the Flutter mobile app</h1>
 
-A new Flutter project.
+**[the Back-end API part is here.](https://github.com/denis-progman/pcdj_site)**
 
 ## Getting Started
 
